@@ -1,0 +1,33 @@
+{
+  "runId": "PR-2025-11-001",
+  "payPeriod": {
+    "startDate": "2025-11-17",
+    "endDate": "2025-11-30",
+    "payDate": "2025-12-05"
+  },
+  "runType": "regular",
+  "payrollModule": "CP",
+  "status": "draft",
+  "employees": [
+    { "employeeId": "EMP-001", "included": true },
+    { "employeeId": "EMP-002", "included": true },
+    { "employeeId": "EMP-003", "included": false, "exclusionReason": "On leave of absence" }
+  ],
+  "calculations": {
+    "grossPay": 0,
+    "totalDeductions": 0,
+    "totalTaxes": 0,
+    "netPay": 0,
+    "employerContributions": 0
+  },
+  "processing": {
+    "createdAt": "2025-11-30T10:00:00Z",
+    "createdBy": "payroll-admin"
+  },
+  "outputs": {
+    "checksGenerated": 0,
+    "directDepositsGenerated": 0,
+    "glBatchId": null,
+    "reportIds": []
+  }
+}

@@ -8,6 +8,8 @@ The payroll configuration system provides:
 - Multi-repository payroll module setup
 - Repository batching for efficient operations
 - Domain and URL caching for API interactions
+- Employee data schemas and templates
+- Timesheet and payroll run processing
 
 ## Configuration Files
 
@@ -63,3 +65,76 @@ The following payroll API patterns are configured:
 - [Web API Sample Integration](../samples/WebApi_SampleIntegration/)
 - [Web API Postman Collection](../samples/WebAPI_Postman/)
 - [Payroll Resources](../resources/Sage300Resources/Sage.CA.SBS.ERP.Sage300.PR.Resources/)
+
+## Data Schemas
+
+The `schemas/` directory contains JSON Schema definitions for payroll data:
+
+### employee-schema.json
+Defines the complete structure for employee payroll data including:
+- **Personal Info**: Name, tax identifier (SSN/SIN), address, contact
+- **Employment Info**: Hire date, pay rate, pay type (hourly/salary), pay frequency
+- **Tax Info**: Federal, state/provincial, and local withholding settings
+- **Banking Info**: Direct deposit accounts with split deposit support
+- **Deductions**: Pre-tax (401k, RRSP, health insurance) and post-tax deductions
+
+### timesheet-schema.json
+Defines time and attendance data:
+- Pay period dates
+- Daily time entries with regular, overtime, and double-time hours
+- Leave tracking (vacation, sick, personal, holiday)
+- Approval workflow status
+
+### payroll-run-schema.json
+Defines payroll processing run configuration:
+- Pay period and pay date
+- Run type (regular, bonus, correction, final)
+- Employee inclusion/exclusion
+- Calculation totals
+- Processing status and outputs
+
+## Templates
+
+The `templates/` directory contains sample data files:
+
+| Template | Description |
+|----------|-------------|
+| `employee-template-ca.json` | Sample Canadian employee (CP module) |
+| `employee-template-us.json` | Sample US employee (UP module) |
+| `timesheet-template.json` | Sample bi-weekly timesheet |
+| `payroll-run-template.json` | Sample payroll run configuration |
+
+## Information Required to Pay an Employee
+
+To process payroll for an employee, you need:
+
+1. **Personal Information**
+   - Full legal name
+   - Tax identifier (SSN or SIN)
+   - Date of birth
+   - Address
+
+2. **Employment Information**
+   - Employee ID
+   - Hire date
+   - Pay rate and type (hourly/salary)
+   - Pay frequency
+
+3. **Tax Withholding**
+   - Federal tax form (W-4 for US, TD1 for Canada)
+   - State/Provincial withholding
+   - Filing status and allowances
+
+4. **Banking Information** (for direct deposit)
+   - Bank routing/transit number
+   - Account number
+   - Account type
+
+5. **Deductions**
+   - Retirement contributions
+   - Health insurance
+   - Other voluntary deductions
+
+6. **Time & Attendance**
+   - Hours worked (for hourly employees)
+   - Leave used

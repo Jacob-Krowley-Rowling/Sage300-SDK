@@ -1,0 +1,39 @@
+{
+  "employeeId": "EMP-001",
+  "payPeriod": {
+    "startDate": "2025-11-17",
+    "endDate": "2025-11-30"
+  },
+  "entries": [
+    { "date": "2025-11-17", "hoursWorked": 8, "overtimeHours": 0, "department": "ENG", "projectCode": "PRJ-100" },
+    { "date": "2025-11-18", "hoursWorked": 8, "overtimeHours": 0, "department": "ENG", "projectCode": "PRJ-100" },
+    { "date": "2025-11-19", "hoursWorked": 8, "overtimeHours": 2, "department": "ENG", "projectCode": "PRJ-100" },
+    { "date": "2025-11-20", "hoursWorked": 8, "overtimeHours": 0, "department": "ENG", "projectCode": "PRJ-100" },
+    { "date": "2025-11-21", "hoursWorked": 8, "overtimeHours": 0, "department": "ENG", "projectCode": "PRJ-100" },
+    { "date": "2025-11-24", "hoursWorked": 8, "overtimeHours": 0, "department": "ENG", "projectCode": "PRJ-101" },
+    { "date": "2025-11-25", "hoursWorked": 8, "overtimeHours": 0, "department": "ENG", "projectCode": "PRJ-101" },
+    { "date": "2025-11-26", "hoursWorked": 8, "overtimeHours": 0, "department": "ENG", "projectCode": "PRJ-101" },
+    { "date": "2025-11-27", "hoursWorked": 0, "overtimeHours": 0, "department": "ENG", "notes": "Thanksgiving Holiday" },
+    { "date": "2025-11-28", "hoursWorked": 8, "overtimeHours": 0, "department": "ENG", "projectCode": "PRJ-101" }
+  ],
+  "leaveUsed": {
+    "vacation": 0,
+    "sick": 0,
+    "personal": 0,
+    "holiday": 8
+  },
+  "totals": {
+    "regularHours": 72,
+    "overtimeHours": 2,
+    "doubleTimeHours": 0,
+    "totalHours": 74,
+    "paidLeaveHours": 8
+  },
+  "approvals": {
+    "employeeApproved": true,
+    "employeeApprovedDate": "2025-11-30T17:00:00Z",
+    "supervisorApproved": true,
+    "supervisorApprovedDate": "2025-11-30T18:00:00Z",
+    "supervisorId": "MGR-001"
+  }
+}
