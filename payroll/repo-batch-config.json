@@ -1,0 +1,39 @@
+{
+  "version": "1.0.0",
+  "description": "Repository batching configuration for Sage 300 SDK",
+  "batchSettings": {
+    "enabled": true,
+    "maxBatchSize": 100,
+    "concurrentBatches": 5,
+    "retryOnFailure": true,
+    "retryAttempts": 3
+  },
+  "repositories": [
+    {
+      "name": "Sage300-SDK",
+      "owner": "Jacob-Krowley-Rowling",
+      "type": "sdk",
+      "priority": 1,
+      "batchOperations": {
+        "build": true,
+        "test": true,
+        "deploy": false
+      }
+    }
+  ],
+  "payrollBatching": {
+    "enabled": true,
+    "modules": [
+      {
+        "moduleId": "CP",
+        "moduleName": "Canada Payroll",
+        "batchGroup": "payroll-canada"
+      },
+      {
+        "moduleId": "UP",
+        "moduleName": "US Payroll",
+        "batchGroup": "payroll-us"
+      }
+    ]
+  }
+}

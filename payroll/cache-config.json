@@ -1,0 +1,36 @@
+{
+  "version": "1.0.0",
+  "description": "Domain and URL cache configuration for Sage 300 SDK",
+  "cacheSettings": {
+    "enabled": true,
+    "ttlSeconds": 3600,
+    "maxCacheSize": 1000,
+    "persistCache": true,
+    "cacheFile": "payroll/cache-data.json"
+  },
+  "domains": {
+    "tracked": [],
+    "allowList": [
+      "*.sage.com",
+      "localhost"
+    ],
+    "denyList": []
+  },
+  "urls": {
+    "tracked": [],
+    "patterns": {
+      "webApi": "/Sage300WebApi/v{version}/-/{company}/",
+      "payroll": {
+        "calculate": "PR/PRCalculatePayroll('$process')",
+        "checks": "PR/PRPayrollChecks",
+        "taxes": "PR/PRCompanyPayrollTaxes"
+      }
+    }
+  },
+  "interactionLog": {
+    "enabled": true,
+    "logPath": "payroll/interaction-log.json",
+    "rotateOnSize": 10485760,
+    "includeTimestamp": true
+  }
+}
