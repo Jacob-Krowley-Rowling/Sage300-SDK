@@ -191,6 +191,11 @@
                 "enum": ["401k", "RRSP", "health-insurance", "dental", "vision", "hsa", "fsa"]
               },
               "amount": { "type": "number" },
+              "amountType": {
+                "type": "string",
+                "enum": ["fixed", "percentage"],
+                "description": "Whether amount is a fixed dollar value or percentage of gross pay"
+              },
               "frequency": { "type": "string", "enum": ["per-pay", "monthly", "annual"] }
             }
           }
@@ -206,6 +211,11 @@
               },
               "description": { "type": "string" },
               "amount": { "type": "number" },
+              "amountType": {
+                "type": "string",
+                "enum": ["fixed", "percentage"],
+                "description": "Whether amount is a fixed dollar value or percentage of gross pay"
+              },
               "frequency": { "type": "string", "enum": ["per-pay", "monthly", "annual"] }
             }
           }

@@ -26,8 +26,9 @@
     "regularHours": 72,
     "overtimeHours": 2,
     "doubleTimeHours": 0,
-    "totalHours": 74,
-    "paidLeaveHours": 8
+    "totalWorkedHours": 74,
+    "paidLeaveHours": 8,
+    "totalPayableHours": 82
   },
   "approvals": {
     "employeeApproved": true,

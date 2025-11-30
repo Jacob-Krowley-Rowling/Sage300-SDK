@@ -47,8 +47,7 @@
         "routingNumber": "00412",
         "accountNumber": "XXXXXXXX",
         "accountType": "checking",
-        "depositType": "remainder",
-        "depositAmount": 100
+        "depositType": "remainder"
       }
     ]
   },

@@ -65,6 +65,7 @@
       {
         "type": "401k",
         "amount": 6,
+        "amountType": "percentage",
         "frequency": "per-pay"
       },
       {

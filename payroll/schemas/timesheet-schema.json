@@ -103,8 +103,9 @@
         "regularHours": { "type": "number" },
         "overtimeHours": { "type": "number" },
         "doubleTimeHours": { "type": "number" },
-        "totalHours": { "type": "number" },
-        "paidLeaveHours": { "type": "number" }
+        "totalWorkedHours": { "type": "number" },
+        "paidLeaveHours": { "type": "number" },
+        "totalPayableHours": { "type": "number" }
       }
     },
     "approvals": {
