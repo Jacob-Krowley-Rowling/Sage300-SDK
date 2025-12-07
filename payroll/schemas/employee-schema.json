@@ -1,0 +1,226 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Employee Payroll Schema",
+  "description": "Schema for employee information required for payroll processing",
+  "type": "object",
+  "required": ["employeeId", "personalInfo", "employmentInfo", "taxInfo"],
+  "properties": {
+    "employeeId": {
+      "type": "string",
+      "description": "Unique employee identifier"
+    },
+    "personalInfo": {
+      "type": "object",
+      "required": ["firstName", "lastName", "taxIdentifier", "dateOfBirth", "address"],
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "description": "Employee's first name"
+        },
+        "lastName": {
+          "type": "string",
+          "description": "Employee's last name"
+        },
+        "middleName": {
+          "type": "string",
+          "description": "Employee's middle name (optional)"
+        },
+        "taxIdentifier": {
+          "type": "string",
+          "description": "SSN (US) or SIN (Canada)"
+        },
+        "dateOfBirth": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of birth (YYYY-MM-DD)"
+        },
+        "address": {
+          "type": "object",
+          "required": ["street", "city", "stateProvince", "postalCode", "country"],
+          "properties": {
+            "street": { "type": "string" },
+            "city": { "type": "string" },
+            "stateProvince": { "type": "string" },
+            "postalCode": { "type": "string" },
+            "country": { "type": "string", "enum": ["US", "CA"] }
+          }
+        },
+        "email": { "type": "string", "format": "email" },
+        "phone": { "type": "string" }
+      }
+    },
+    "employmentInfo": {
+      "type": "object",
+      "required": ["hireDate", "employmentType", "payRate", "payFrequency"],
+      "properties": {
+        "hireDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of hire (YYYY-MM-DD)"
+        },
+        "terminationDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of termination if applicable"
+        },
+        "employmentType": {
+          "type": "string",
+          "enum": ["full-time", "part-time", "contractor", "temporary"],
+          "description": "Type of employment"
+        },
+        "department": {
+          "type": "string",
+          "description": "Department or cost center"
+        },
+        "jobTitle": {
+          "type": "string",
+          "description": "Employee's job title"
+        },
+        "payRate": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Hourly wage or annual salary amount"
+        },
+        "payType": {
+          "type": "string",
+          "enum": ["hourly", "salary"],
+          "description": "Whether employee is paid hourly or salary"
+        },
+        "payFrequency": {
+          "type": "string",
+          "enum": ["weekly", "bi-weekly", "semi-monthly", "monthly"],
+          "description": "How often employee is paid"
+        },
+        "workLocation": {
+          "type": "string",
+          "description": "Primary work location for tax purposes"
+        }
+      }
+    },
+    "taxInfo": {
+      "type": "object",
+      "required": ["federalWithholding"],
+      "properties": {
+        "federalWithholding": {
+          "type": "object",
+          "properties": {
+            "filingStatus": {
+              "type": "string",
+              "enum": ["single", "married", "head-of-household"],
+              "description": "Tax filing status"
+            },
+            "allowances": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Number of allowances claimed"
+            },
+            "additionalWithholding": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Additional amount to withhold per pay period"
+            },
+            "exempt": {
+              "type": "boolean",
+              "default": false,
+              "description": "Whether employee claims exemption from withholding"
+            }
+          }
+        },
+        "stateProvincialWithholding": {
+          "type": "object",
+          "properties": {
+            "state": { "type": "string" },
+            "allowances": { "type": "integer", "minimum": 0 },
+            "additionalWithholding": { "type": "number", "minimum": 0 },
+            "exempt": { "type": "boolean", "default": false }
+          }
+        },
+        "localWithholding": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "locality": { "type": "string" },
+              "rate": { "type": "number" }
+            }
+          }
+        }
+      }
+    },
+    "bankingInfo": {
+      "type": "object",
+      "description": "Direct deposit information",
+      "properties": {
+        "accounts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["bankName", "routingNumber", "accountNumber", "accountType"],
+            "properties": {
+              "bankName": { "type": "string" },
+              "routingNumber": { "type": "string" },
+              "accountNumber": { "type": "string" },
+              "accountType": {
+                "type": "string",
+                "enum": ["checking", "savings"]
+              },
+              "depositType": {
+                "type": "string",
+                "enum": ["percentage", "fixed", "remainder"],
+                "description": "How to split deposit across accounts"
+              },
+              "depositAmount": {
+                "type": "number",
+                "description": "Percentage or fixed amount for this account"
+              }
+            }
+          }
+        }
+      }
+    },
+    "deductions": {
+      "type": "object",
+      "properties": {
+        "preTax": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": ["401k", "RRSP", "health-insurance", "dental", "vision", "hsa", "fsa"]
+              },
+              "amount": { "type": "number" },
+              "amountType": {
+                "type": "string",
+                "enum": ["fixed", "percentage"],
+                "description": "Whether amount is a fixed dollar value or percentage of gross pay"
+              },
+              "frequency": { "type": "string", "enum": ["per-pay", "monthly", "annual"] }
+            }
+          }
+        },
+        "postTax": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": ["union-dues", "garnishment", "charitable", "other"]
+              },
+              "description": { "type": "string" },
+              "amount": { "type": "number" },
+              "amountType": {
+                "type": "string",
+                "enum": ["fixed", "percentage"],
+                "description": "Whether amount is a fixed dollar value or percentage of gross pay"
+              },
+              "frequency": { "type": "string", "enum": ["per-pay", "monthly", "annual"] }
+            }
+          }
+        }
+      }
+    }
+  }
+}

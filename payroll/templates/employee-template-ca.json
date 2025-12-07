@@ -1,0 +1,69 @@
+{
+  "employeeId": "EMP-001",
+  "personalInfo": {
+    "firstName": "John",
+    "lastName": "Smith",
+    "middleName": "A",
+    "taxIdentifier": "XXX-XX-XXXX",
+    "dateOfBirth": "1985-06-15",
+    "address": {
+      "street": "123 Main Street",
+      "city": "Richmond",
+      "stateProvince": "BC",
+      "postalCode": "V6Y 1A1",
+      "country": "CA"
+    },
+    "email": "john.smith@example.com",
+    "phone": "604-555-1234"
+  },
+  "employmentInfo": {
+    "hireDate": "2020-01-15",
+    "employmentType": "full-time",
+    "department": "Engineering",
+    "jobTitle": "Software Developer",
+    "payRate": 85000,
+    "payType": "salary",
+    "payFrequency": "bi-weekly",
+    "workLocation": "Vancouver Office"
+  },
+  "taxInfo": {
+    "federalWithholding": {
+      "filingStatus": "married",
+      "allowances": 2,
+      "additionalWithholding": 0,
+      "exempt": false
+    },
+    "stateProvincialWithholding": {
+      "state": "BC",
+      "allowances": 2,
+      "additionalWithholding": 0,
+      "exempt": false
+    }
+  },
+  "bankingInfo": {
+    "accounts": [
+      {
+        "bankName": "TD Canada Trust",
+        "routingNumber": "00412",
+        "accountNumber": "XXXXXXXX",
+        "accountType": "checking",
+        "depositType": "remainder"
+      }
+    ]
+  },
+  "deductions": {
+    "preTax": [
+      {
+        "type": "RRSP",
+        "amount": 500,
+        "frequency": "per-pay"
+      },
+      {
+        "type": "health-insurance",
+        "amount": 150,
+        "frequency": "per-pay"
+      }
+    ],
+    "postTax": []
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "employeeId": "EMP-002",
+  "personalInfo": {
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "middleName": "B",
+    "taxIdentifier": "XXX-XX-XXXX",
+    "dateOfBirth": "1990-03-22",
+    "address": {
+      "street": "456 Oak Avenue",
+      "city": "Seattle",
+      "stateProvince": "WA",
+      "postalCode": "98101",
+      "country": "US"
+    },
+    "email": "jane.doe@example.com",
+    "phone": "206-555-5678"
+  },
+  "employmentInfo": {
+    "hireDate": "2021-06-01",
+    "employmentType": "full-time",
+    "department": "Marketing",
+    "jobTitle": "Marketing Manager",
+    "payRate": 95000,
+    "payType": "salary",
+    "payFrequency": "semi-monthly",
+    "workLocation": "Seattle Office"
+  },
+  "taxInfo": {
+    "federalWithholding": {
+      "filingStatus": "single",
+      "allowances": 1,
+      "additionalWithholding": 50,
+      "exempt": false
+    },
+    "stateProvincialWithholding": {
+      "state": "WA",
+      "allowances": 1,
+      "additionalWithholding": 0,
+      "exempt": false
+    }
+  },
+  "bankingInfo": {
+    "accounts": [
+      {
+        "bankName": "Chase Bank",
+        "routingNumber": "XXXXXXXXX",
+        "accountNumber": "XXXXXXXX",
+        "accountType": "checking",
+        "depositType": "percentage",
+        "depositAmount": 80
+      },
+      {
+        "bankName": "Chase Bank",
+        "routingNumber": "XXXXXXXXX",
+        "accountNumber": "XXXXXXXX",
+        "accountType": "savings",
+        "depositType": "remainder",
+        "depositAmount": 20
+      }
+    ]
+  },
+  "deductions": {
+    "preTax": [
+      {
+        "type": "401k",
+        "amount": 6,
+        "amountType": "percentage",
+        "frequency": "per-pay"
+      },
+      {
+        "type": "health-insurance",
+        "amount": 200,
+        "frequency": "per-pay"
+      },
+      {
+        "type": "hsa",
+        "amount": 100,
+        "frequency": "per-pay"
+      }
+    ],
+    "postTax": [
+      {
+        "type": "charitable",
+        "description": "United Way",
+        "amount": 25,
+        "frequency": "per-pay"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "payrollSetup": {
+    "version": "1.0.0",
+    "description": "Payroll configuration for Sage 300 SDK repositories",
+    "enabled": true,
+    "supportedPayrollModules": [
+      {
+        "id": "CP",
+        "name": "Canada Payroll",
+        "enabled": true,
+        "resourcePath": "resources/Sage300Resources/Sage.CA.SBS.ERP.Sage300.PR.Resources"
+      },
+      {
+        "id": "UP",
+        "name": "US Payroll",
+        "enabled": true,
+        "resourcePath": "resources/Sage300Resources/Sage.CA.SBS.ERP.Sage300.PR.Resources"
+      }
+    ]
+  },
+  "repositories": {
+    "batchingEnabled": true,
+    "repos": [
+      {
+        "name": "Sage300-SDK",
+        "type": "primary",
+        "payrollEnabled": true
+      }
+    ]
+  },
+  "cache": {
+    "enabled": true,
+    "domains": [],
+    "urls": []
+  }
+}

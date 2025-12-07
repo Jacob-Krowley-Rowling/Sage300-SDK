@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Payroll Run Schema",
+  "description": "Schema for payroll processing run configuration and results",
+  "type": "object",
+  "required": ["runId", "payPeriod", "runType", "status"],
+  "properties": {
+    "runId": {
+      "type": "string",
+      "description": "Unique payroll run identifier"
+    },
+    "payPeriod": {
+      "type": "object",
+      "required": ["startDate", "endDate", "payDate"],
+      "properties": {
+        "startDate": { "type": "string", "format": "date" },
+        "endDate": { "type": "string", "format": "date" },
+        "payDate": { "type": "string", "format": "date" }
+      }
+    },
+    "runType": {
+      "type": "string",
+      "enum": ["regular", "bonus", "correction", "final"],
+      "description": "Type of payroll run"
+    },
+    "payrollModule": {
+      "type": "string",
+      "enum": ["CP", "UP"],
+      "description": "Canada Payroll (CP) or US Payroll (UP)"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "pending-approval", "approved", "processing", "completed", "cancelled"],
+      "description": "Current status of the payroll run"
+    },
+    "employees": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["employeeId"],
+        "properties": {
+          "employeeId": { "type": "string" },
+          "included": { "type": "boolean", "default": true },
+          "exclusionReason": { "type": "string" }
+        }
+      }
+    },
+    "calculations": {
+      "type": "object",
+      "properties": {
+        "grossPay": { "type": "number" },
+        "totalDeductions": { "type": "number" },
+        "totalTaxes": { "type": "number" },
+        "netPay": { "type": "number" },
+        "employerContributions": { "type": "number" }
+      }
+    },
+    "processing": {
+      "type": "object",
+      "properties": {
+        "createdAt": { "type": "string", "format": "date-time" },
+        "createdBy": { "type": "string" },
+        "approvedAt": { "type": "string", "format": "date-time" },
+        "approvedBy": { "type": "string" },
+        "processedAt": { "type": "string", "format": "date-time" },
+        "completedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "outputs": {
+      "type": "object",
+      "properties": {
+        "checksGenerated": { "type": "integer" },
+        "directDepositsGenerated": { "type": "integer" },
+        "glBatchId": { "type": "string" },
+        "reportIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

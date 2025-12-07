@@ -1,0 +1,122 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Timesheet Schema",
+  "description": "Schema for employee timesheet/time and attendance data",
+  "type": "object",
+  "required": ["employeeId", "payPeriod", "entries"],
+  "properties": {
+    "employeeId": {
+      "type": "string",
+      "description": "Employee identifier"
+    },
+    "payPeriod": {
+      "type": "object",
+      "required": ["startDate", "endDate"],
+      "properties": {
+        "startDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["date", "hoursWorked"],
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "hoursWorked": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 24
+          },
+          "overtimeHours": {
+            "type": "number",
+            "minimum": 0,
+            "default": 0
+          },
+          "doubleTimeHours": {
+            "type": "number",
+            "minimum": 0,
+            "default": 0
+          },
+          "department": {
+            "type": "string",
+            "description": "Department code for cost allocation"
+          },
+          "projectCode": {
+            "type": "string",
+            "description": "Project code for billing/tracking"
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "leaveUsed": {
+      "type": "object",
+      "properties": {
+        "vacation": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Vacation hours used"
+        },
+        "sick": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Sick leave hours used"
+        },
+        "personal": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Personal time hours used"
+        },
+        "holiday": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Holiday hours"
+        },
+        "other": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string" },
+              "hours": { "type": "number" }
+            }
+          }
+        }
+      }
+    },
+    "totals": {
+      "type": "object",
+      "properties": {
+        "regularHours": { "type": "number" },
+        "overtimeHours": { "type": "number" },
+        "doubleTimeHours": { "type": "number" },
+        "totalWorkedHours": { "type": "number" },
+        "paidLeaveHours": { "type": "number" },
+        "totalPayableHours": { "type": "number" }
+      }
+    },
+    "approvals": {
+      "type": "object",
+      "properties": {
+        "employeeApproved": { "type": "boolean", "default": false },
+        "employeeApprovedDate": { "type": "string", "format": "date-time" },
+        "supervisorApproved": { "type": "boolean", "default": false },
+        "supervisorApprovedDate": { "type": "string", "format": "date-time" },
+        "supervisorId": { "type": "string" }
+      }
+    }
+  }
+}
